@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes Google Maps en Couches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .map-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .map {
+            width: 90%;
+            max-width: 800px;
+            height: 500px;
+            margin: 10px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: none;
+        }
+        .map.active {
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #3367D6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visualisation de Cartes Google Maps</h1>
+    <p>Basculer entre les deux cartes :</p>
+    
+    <div>
+        <button onclick="showMap('map1')">Carte 1</button>
+        <button onclick="showMap('map2')">Carte 2</button>
+    </div>
+    
+    <div class="map-container">
+        <iframe id="map1" class="map active" src="https://www.google.com/maps/d/u/0/embed?mid=1nRCOT1dPAzIFIZiy-In-wk-L6mwGHbk&ehbc=2E312F" width="640" height="480"></iframe>
+        <iframe id="map2" class="map" src="https://www.google.com/maps/d/u/0/embed?mid=1r3FelvzrItaT1eZ7Xtx8GadfKMWR6FA&ehbc=2E312F" width="640" height="480"></iframe>
+    </div>
+
+    <script>
+        function showMap(mapId) {
+            // Masquer toutes les cartes
+            document.querySelectorAll('.map').forEach(map => {
+                map.classList.remove('active');
+            });
+            
+            // Afficher la carte sélectionnée
+            document.getElementById(mapId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
